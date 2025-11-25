@@ -1,0 +1,12 @@
+name = "triangular_tessellation_binary_trees"
+description = "Binary trees over a triangular tessellation of the plane."
+version = "0.1.0-dev"
+
+authors = ["Reed Axewielder"]
+maintainers = ["Reed Axewielder <axewielder.goods@outlook.com>"]
+maintainers-logins = ["Axe-Goods"]
+licenses = "MIT"
+website = "https://github.com/supthos/triangular_tessellation_binary_trees"
+tags = []
+
+executables = ["triangular_tessellation_binary_trees"]
