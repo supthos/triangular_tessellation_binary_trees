@@ -1,5 +1,8 @@
 with Ada.Numerics.Elementary_Functions;
 use Ada.Numerics.Elementary_Functions;
+with Ada.Strings;
+with Ada.Strings.Unbounded;
+use Ada.Strings.Unbounded;
 with Ada.Text_IO;
 package body Plane_Tessellation is
    function To_Cartesian(This: PlTess_Access) return Cartesian_Plane.cartesian is
@@ -30,4 +33,34 @@ package body Plane_Tessellation is
       Cart := To_Cartesian (This);
       Ada.Text_IO.Put_Line ("(" & Float'Image(Cart.X) & "," & Float'Image(Cart.Y) & ")");
    end Print_Transform_Image;
+
+   procedure Print_R_Plot (Points: Point_Vector.Vector) is
+      XList : Unbounded_String;
+      YList : Unbounded_String;
+      Cart : Cartesian_Plane.cartesian;
+   begin
+      for point of Points loop
+         Cart := To_Cartesian (point);
+         Append ( Xlist, Float'Image(Cart.X)) ;
+         Append ( Ylist, Float'Image(Cart.Y)) ;
+         if point /= Points.Last_Element then
+            Append (XList, ",");
+            Append (YList, ",");
+         end if;
+      end loop;
+      Ada.Text_IO.Put_Line ("plot(c(" & To_String(XList) & "), c(" & To_String(YList) & "))");
+   end Print_R_Plot;
+         
+   function Point_Constructor (a, b, c : Float) return PlTess_Access is
+      point : PlTess_Access := new pltess;
+   begin
+      Set (point, a, b, c);
+      return point;
+   end Point_Constructor;
+
+   function Point_Constructor (p : PlTess_Access) return PlTess_Access is
+   begin
+      return Point_Constructor (p.A, p.B, p.C);
+   end Point_Constructor;
+      
 end Plane_Tessellation;

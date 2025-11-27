@@ -9,25 +9,57 @@ with Plane_Tessellation;
 procedure Triangular_Tessellation_Binary_Trees is
    Tape : Binary_Tree.Tree_Access := new Binary_Tree.btree;
    Tess : Plane_Tessellation.PlTess_Access := new Plane_Tessellation.pltess;
+   P_Vector : Plane_Tessellation.Point_Vector.Vector;
 begin
    Binary_Tree.Initialization (Tape, (2**4) - 1);
    Tree_Node.Print_Values (Tape.Root);
 
    Ada.Text_IO.Put_Line ("Plot");
    Plane_Tessellation.Set (Tess, 0.0, 0.0, 0.0);
+   P_Vector.Append (Plane_Tessellation.Point_Constructor(Tess));
    Plane_Tessellation.Print_Transform_Image (Tess);
    Plane_Tessellation.Set (Tess, 1.0, 0.0, -1.0);
+   P_Vector.Append (Plane_Tessellation.Point_Constructor(Tess));
    Plane_Tessellation.Print_Transform_Image (Tess);
    Plane_Tessellation.Set (Tess, 0.0, 1.0, -1.0);
+   P_Vector.Append (Plane_Tessellation.Point_Constructor(Tess));
    Plane_Tessellation.Print_Transform_Image (Tess);
    Plane_Tessellation.Set (Tess, -1.0, 1.0, 0.0);
+   P_Vector.Append (Plane_Tessellation.Point_Constructor(Tess));
    Plane_Tessellation.Print_Transform_Image (Tess);
    Plane_Tessellation.Set (Tess, -1.0, 0.0, 1.0);
+   P_Vector.Append (Plane_Tessellation.Point_Constructor(Tess));
    Plane_Tessellation.Print_Transform_Image (Tess);
    Plane_Tessellation.Set (Tess, 0.0, -1.0, 1.0);
+   P_Vector.Append (Plane_Tessellation.Point_Constructor(Tess));
    Plane_Tessellation.Print_Transform_Image (Tess);
    Plane_Tessellation.Set (Tess, 1.0, -1.0, 0.0);
+   P_Vector.Append (Plane_Tessellation.Point_Constructor(Tess));
    Plane_Tessellation.Print_Transform_Image (Tess);
    
+   Ada.Text_IO.Put_Line ("Plot");
+   Plane_Tessellation.Set (Tess, 0.0, 0.0, 0.0);
+   Plane_Tessellation.Print_Transform_Image (Tess);
+   Plane_Tessellation.Set (Tess, 1.0, 1.0, -2.0);
+   P_Vector.Append (Plane_Tessellation.Point_Constructor(Tess));
+   Plane_Tessellation.Print_Transform_Image (Tess);
+   Plane_Tessellation.Set (Tess, -1.0, 2.0, -1.0);
+   P_Vector.Append (Plane_Tessellation.Point_Constructor(Tess));
+   Plane_Tessellation.Print_Transform_Image (Tess);
+   Plane_Tessellation.Set (Tess, -2.0, 1.0, 1.0);
+   P_Vector.Append (Plane_Tessellation.Point_Constructor(Tess));
+   Plane_Tessellation.Print_Transform_Image (Tess);
+   Plane_Tessellation.Set (Tess, -1.0, -1.0, 2.0);
+   P_Vector.Append (Plane_Tessellation.Point_Constructor(Tess));
+   Plane_Tessellation.Print_Transform_Image (Tess);
+   Plane_Tessellation.Set (Tess, 1.0, -2.0, 1.0);
+   P_Vector.Append (Plane_Tessellation.Point_Constructor(Tess));
+   Plane_Tessellation.Print_Transform_Image (Tess);
+   Plane_Tessellation.Set (Tess, 2.0, -1.0, -1.0);
+   P_Vector.Append (Plane_Tessellation.Point_Constructor(Tess));
+   Plane_Tessellation.Print_Transform_Image (Tess);
+   
+   
+   Plane_Tessellation.Print_R_Plot (P_Vector);
 
 end Triangular_Tessellation_Binary_Trees;
