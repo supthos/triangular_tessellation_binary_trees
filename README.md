@@ -1,1 +1,1 @@
-![points](points on tessellated plane.png)
+![points](points.png)
