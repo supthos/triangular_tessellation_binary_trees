@@ -8,8 +8,15 @@ package body Plane_Tessellation is
    function To_Cartesian(This: PlTess_Access) return Cartesian_Plane.cartesian is
       Coordinates : Cartesian_Plane.cartesian;
    begin
-      Coordinates.X := (This.A - This.C) / 2.0;
-      Coordinates.Y := Sqrt(3.0) * This.B / 2.0;
+      -- Coordinates.X := (This.A - This.C) / 2.0;
+      -- Coordinates.Y := Sqrt(3.0) * This.B / 2.0;
+      -- This is a more general formula than the above, because it illustrates the 
+      -- reasoning behind the choice of coordinates. As long as the angles correspond to a
+      -- rotation of the angles of the n roots of unity (in this case n equals 3), the 
+      -- formula will hold for any n, if I'm not mistaken. I should probable include a proof.
+      -- But for the case of n equals 3, it works.
+      Coordinates.Y := ((Sin (-30.0,360.0) * This.A) + (Sin (90.0,360.0) * This.B) + (Sin (210.0,360.0) * This.C) ) / Sqrt (3.0) ;
+      Coordinates.X := ((Cos (-30.0,360.0) * This.A) + (Cos (90.0,360.0) * This.B) + (Cos (210.0,360.0) * This.C) ) / Sqrt (3.0) ;
       return Coordinates;
    end To_Cartesian;
 
