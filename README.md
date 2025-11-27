@@ -1,1 +1,1 @@
-![points](/"points on tesselated plane.png" "pic")
+![points](points on tessellated plane.png "pic")
