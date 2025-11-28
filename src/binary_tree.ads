@@ -1,4 +1,5 @@
 with Tree_Node;
+with Plane_Tessellation;
 package Binary_Tree is
    type btree;
    type Tree_Access is access btree;

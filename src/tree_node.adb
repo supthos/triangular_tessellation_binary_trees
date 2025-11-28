@@ -48,4 +48,34 @@ package body Tree_Node is
          Print_Values (This.Right);
       end if;
    end Print_Values;
+   function Set_Point_Coord (This : Node_Access; coord : PlTess_Access) return Boolean is
+   begin
+      if coord.A + coord.B + coord.C /= 0.0 then
+         return False;
+      elsif This.Point = null then
+         This.Point := Point_Constructor (coord);
+      else 
+         Set (This.Point, coord.A, coord.B, coord.C);
+      end if;
+      return true;
+   end Set_Point_Coord;
+
+   function Set_Point (This : Node_Access; A, B, C : Float) return Boolean is
+   begin
+      if A + B + C /= 0.0 then
+         return False ;
+      elsif This.Point = null then
+         This.Point := Point_Constructor (A, B, C);
+      else 
+         Set (This.Point, A, B, C);
+      end if;
+      return True;
+   end Set_Point;
+      
+   function Get_Point (This : Node_Access) return PlTess_Access is
+   begin 
+      return This.Point;
+   end Get_Point;
+   
+
 end Tree_Node;

@@ -15,8 +15,14 @@ package body Plane_Tessellation is
       -- rotation of the angles of the n roots of unity (in this case n equals 3), the 
       -- formula will hold for any n, if I'm not mistaken. I should probable include a proof.
       -- But for the case of n equals 3, it works.
-      Coordinates.Y := ((Sin (-30.0,360.0) * This.A) + (Sin (90.0,360.0) * This.B) + (Sin (210.0,360.0) * This.C) ) / Sqrt (3.0) ;
-      Coordinates.X := ((Cos (-30.0,360.0) * This.A) + (Cos (90.0,360.0) * This.B) + (Cos (210.0,360.0) * This.C) ) / Sqrt (3.0) ;
+      -- Coordinates.Y := ((Sin (-30.0,360.0) * This.A) + (Sin (90.0,360.0) * This.B) + (Sin (210.0,360.0) * This.C) ) / Sqrt (3.0) ;
+      -- Coordinates.X := ((Cos (-30.0,360.0) * This.A) + (Cos (90.0,360.0) * This.B) + (Cos (210.0,360.0) * This.C) ) / Sqrt (3.0) ;
+      -- Even though the second formula above works, it obfuscates the essence of the work
+      -- being done here. This third formula is somewhat more straight forward with the 
+      -- added benefit that the points of the unit cube map to the points of the second formula.
+      Coordinates.Y := ((Sin (0.0,360.0) * This.A) + (Sin (120.0,360.0) * This.B) + (Sin (240.0,360.0) * This.C) ) ;
+      Coordinates.X := ((Cos (0.0,360.0) * This.A) + (Cos (120.0,360.0) * This.B) + (Cos (240.0,360.0) * This.C) ) ;
+
       return Coordinates;
    end To_Cartesian;
 
