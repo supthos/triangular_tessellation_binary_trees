@@ -6,9 +6,10 @@ package Tree_Node is
 
    type tnode is 
       record 
-         Left : Node_Access;
-         Right : Node_Access;
-         Value : Boolean := false;
+         Parent : Node_Access := null;
+         Left : Node_Access := null;
+         Right : Node_Access := null;
+         Value : Boolean := false;  -- maybe, for visited, when searching
          Point : PlTess_Access := null;
       end record;
    function Is_Full (This : Node_Access) return Boolean;

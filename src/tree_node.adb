@@ -26,8 +26,10 @@ package body Tree_Node is
       if not Is_Full(This) then
          if This.Left = null then 
             This.Left := node;
+            This.Left.Parent := This;
          elsif This.Right = null then
             This.Right := node;
+            This.Right.Parent := This;
          end if;
       else 
          if Nodes(This.Right) < Nodes(This.Left) then
