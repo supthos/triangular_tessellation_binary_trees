@@ -47,6 +47,13 @@ package body Plane_Tessellation is
       Ada.Text_IO.Put_Line ("(" & Float'Image(Cart.X) & "," & Float'Image(Cart.Y) & ")");
    end Print_Transform_Image;
 
+   procedure Print_Transform_Image_2  (This: PlTess_Access) is
+      Cart : Cartesian_Plane.cartesian;
+   begin
+      Cart := To_Cartesian (This);
+      Ada.Text_IO.Put_Line ( Float'Image(Cart.X) & "," & Float'Image(Cart.Y) ) ;
+   end Print_Transform_Image_2;
+
    procedure Print_R_Plot (Points: Point_Vector.Vector) is
       XList : Unbounded_String;
       YList : Unbounded_String;

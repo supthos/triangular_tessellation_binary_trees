@@ -13,6 +13,7 @@ package Plane_Tessellation is
    procedure Set(This: PlTess_Access; a, b, c : Float);
    procedure Print_Transform  (This: PlTess_Access) ;
    procedure Print_Transform_Image  (This: PlTess_Access) ;
+   procedure Print_Transform_Image_2  (This: PlTess_Access) ;
    
    package Point_Vector is new Ada.Containers.Vectors
       (Index_Type => Natural, Element_Type => PlTess_Access);
