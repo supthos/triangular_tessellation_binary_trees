@@ -110,6 +110,8 @@ package body Binary_Tree is
                            Buffer_Tree := null;
                            Copy (Buffer_Tree, Tree);
                            D_Leaf := Tree_Node.Next_Leaf(Buffer_Tree.Root);
+                           D_Leaf.Left := new tnode;
+                           D_Leaf.Right := new tnode;
                            Assert (Set_Point_Coord(D_Leaf.Left,pointL));
                            Assert (Set_Point_Coord(D_Leaf.Right,pointR));
                            Tree_Vec.Append(Buffer_Tree);

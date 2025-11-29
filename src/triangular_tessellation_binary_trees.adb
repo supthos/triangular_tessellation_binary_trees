@@ -18,9 +18,11 @@ procedure Triangular_Tessellation_Binary_Trees is
    T_Vector : Tree_Vector.Vector;
 begin
    Binary_Tree.Initialization (Tape, 0);
-
-
-   Binary_Tree.Print_Tree (Tape.Root);
+   Tree_Vector.Append(T_Vector, Tape);
+   T_Vector := Next_Degree (T_Vector);
+   for tree of T_Vector loop
+      Binary_Tree.Print_Tree (tree.Root);
+   end loop;
 
    --  Ada.Text_IO.Put_Line ("Plot");
    --  Plane_Tessellation.Set (Tess, 0.0, 0.0, 0.0);
