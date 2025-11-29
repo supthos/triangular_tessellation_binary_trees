@@ -79,5 +79,45 @@ package body Tree_Node is
       return This.Point;
    end Get_Point;
    
+   function Next_Leaf (This : Node_Access) return Node_Access is
+   begin
+      if This.Left = null and This.Right = null then
+         return This;
+      elsif Nodes (This.Right) < Nodes(This.Left) then 
+         return Next_Leaf (This.Right);
+      else 
+         return Next_Leaf (This.Left);
+      end if;
+   end Next_Leaf;
+
+   function Next_Empty (This : Node_Access) return Node_Access is
+   begin
+      if not Is_Full (This) then
+         if This.Left = null then
+            return This.Left;
+         elsif This.Right = null then
+            return This.Right;
+         end if;
+      else 
+         if Nodes (This.Right) < Nodes(This.Left) then
+            return Next_Empty (This.Right);
+         else
+            return Next_Empty (This.Left);
+         end if;
+      end if;
+   end Next_Empty;
+      
+   function Get_Point_Vector (This : Node_Access) return Point_Vector.Vector is
+      PVec : Point_Vector.Vector;
+   begin 
+      if This.Left /= null then 
+         PVec.Append_Vector (Get_Point_Vector(This.Left));
+      end if;
+      PVec.Append (This.Point);
+      if This.Right /= null then
+         PVec.Append_Vector (Get_Point_Vector(This.Right));
+      end if;
+      return PVec;
+   end Get_Point_Vector;
 
 end Tree_Node;

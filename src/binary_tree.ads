@@ -16,6 +16,8 @@ package Binary_Tree is
       (Index_Type => Natural, Element_Type => Tree_Access);
    procedure Initialization (This : Tree_Access;  S : Natural);
    procedure Print_Tree (node : Node_Access);
+   function Next_Degree (TVec : Tree_Vector.Vector) return Tree_Vector.Vector;
+   procedure Copy_Tree (This : in out Node_Access; Other: in Node_Access);
+   procedure Copy (This: in out Tree_Access; Other: in Tree_Access) ;
    
-
 end Binary_Tree;

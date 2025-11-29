@@ -19,5 +19,8 @@ package Tree_Node is
    function Set_Point_Coord (This : Node_Access; coord : PlTess_Access) return Boolean;
    function Set_Point (This : Node_Access; A, B, C : Float) return Boolean;
    function Get_Point (This : Node_Access) return PlTess_Access;
+   function Next_Leaf (This : Node_Access) return Node_Access;
+   function Next_Empty (This : Node_Access) return Node_Access;
+   function Get_Point_Vector (This : Node_Access) return Point_Vector.Vector;
 
 end Tree_Node;
