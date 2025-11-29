@@ -83,4 +83,15 @@ package body Plane_Tessellation is
       return Point_Constructor (p.A, p.B, p.C);
    end Point_Constructor;
       
+   function Adjacents (This : PlTess_Access) return Point_Vector.Vector is
+      List : Point_Vector.Vector;
+   begin
+      List.Append (Point_Constructor(This.A + 1.0, This.B, This.C - 1.0));
+      List.Append (Point_Constructor(This.A, This.B + 1.0, This.C - 1.0));
+      List.Append (Point_Constructor(This.A - 1.0, This.B + 1.0, This.C));
+      List.Append (Point_Constructor(This.A - 1.0, This.B, This.C + 1.0));
+      List.Append (Point_Constructor(This.A, This.B - 1.0, This.C + 1.0));
+      List.Append (Point_Constructor(This.A + 1.0, This.B - 1.0, This.C));
+      return List;
+   end Adjacents;
 end Plane_Tessellation;

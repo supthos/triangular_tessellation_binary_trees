@@ -22,4 +22,5 @@ package Plane_Tessellation is
 
    function Point_Constructor (a, b, c : Float) return PlTess_Access;
    function Point_Constructor (p : PlTess_Access) return PlTess_Access;
+   function Adjacents (This : PlTess_Access) return Point_Vector.Vector;
 end Plane_Tessellation;
