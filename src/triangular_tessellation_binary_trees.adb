@@ -15,10 +15,19 @@ begin
    Binary_Tree.Initialization (Tape, 0);
    Tree_Vector.Append(T_Vector, Tape);
    T_Vector := Next_Degree (T_Vector);
-   for tree of T_Vector loop
-      Binary_Tree.Print_Tree (tree.Root);
-   end loop;
-   -- should read "Trees:  30"
+   --  Trees:  30
+   --  Trees:  900
+   --  Trees:  27000
+   --  Trees:  810000
    Ada.Text_IO.Put_Line ("Trees: " & Integer'Image(Integer(T_Vector.Length)));
+   T_Vector := Next_Degree (T_Vector);
+   Ada.Text_IO.Put_Line ("Trees: " & Integer'Image(Integer(T_Vector.Length)));
+   T_Vector := Next_Degree (T_Vector);
+   Ada.Text_IO.Put_Line ("Trees: " & Integer'Image(Integer(T_Vector.Length)));
+   T_Vector := Next_Degree (T_Vector);
+   Ada.Text_IO.Put_Line ("Trees: " & Integer'Image(Integer(T_Vector.Length)));
+
+   
+   
    
 end Triangular_Tessellation_Binary_Trees;

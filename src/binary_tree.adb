@@ -36,13 +36,14 @@ package body Binary_Tree is
 
    procedure Copy_Tree (This : in out Node_Access; Other: in Node_Access) is
    begin
+      This := new tnode;
       Assert (Set_Point_Coord (This, Other.Point));
       if Other.Left /= null then
          Copy_Tree (This.Left, Other.Left);
       end if;
 
       if Other.Right /= null then
-         Copy_Tree (This.Right, This.Right);
+         Copy_Tree (This.Right, Other.Right);
       end if;
    end Copy_Tree;
 
