@@ -10,11 +10,6 @@ use Plane_Tessellation;
 
 procedure Triangular_Tessellation_Binary_Trees is
    Tape : Tree_Access := new btree;
-   Tess : PlTess_Access := new pltess;
-   P_Vector : Point_Vector.Vector;
-   Q_Vector : Point_Vector.Vector;
-   R_Vector : Point_Vector.Vector;
-   -- Graph : Plane_Tessellation.Point_Vector.Vector;
    T_Vector : Tree_Vector.Vector;
 begin
    Binary_Tree.Initialization (Tape, 0);

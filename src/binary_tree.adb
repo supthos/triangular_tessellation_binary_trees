@@ -1,12 +1,6 @@
 with Ada.Assertions;
 use Ada.Assertions;
-with Ada.Strings;
-with Ada.Strings.Unbounded;
-use Ada.Strings.Unbounded;
 with Ada.Text_IO;
-with Plane_Tessellation;
-use Plane_Tessellation;
-
 
 package body Binary_Tree is
    procedure Initialization (This : Tree_Access; S : Natural) is
@@ -114,6 +108,7 @@ package body Binary_Tree is
                            D_Leaf.Right := new tnode;
                            Assert (Set_Point_Coord(D_Leaf.Left,pointL));
                            Assert (Set_Point_Coord(D_Leaf.Right,pointR));
+                           Buffer_Tree.Size := Buffer_Tree.Size + 2;
                            Tree_Vec.Append(Buffer_Tree);
                         end if;
                         Point_Vector.Delete (Adj_Vec2, IndexR, 1);
