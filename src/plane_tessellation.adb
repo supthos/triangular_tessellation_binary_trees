@@ -5,6 +5,9 @@ with Ada.Strings.Unbounded;
 use Ada.Strings.Unbounded;
 with Ada.Text_IO;
 package body Plane_Tessellation is
+
+
+
    function To_Cartesian(This: PlTess_Access) return Cartesian_Plane.cartesian is
       Coordinates : Cartesian_Plane.cartesian;
    begin
@@ -26,8 +29,11 @@ package body Plane_Tessellation is
       return Coordinates;
    end To_Cartesian;
 
-   procedure Set(This: PlTess_Access; a, b, c : Float) is 
+   procedure Set(This: in out PlTess_Access; a, b, c : Float) is 
    begin
+      if This = null then
+         This := new pltess;
+      end if;
       This.A := a;
       This.B := b;
       This.C := c;
@@ -71,6 +77,11 @@ package body Plane_Tessellation is
       Ada.Text_IO.Put_Line ("plot(c(" & To_String(XList) & "), c(" & To_String(YList) & "))");
    end Print_R_Plot;
          
+   procedure Print_Point (Point : pltess) is
+   begin 
+      Ada.Text_IO.Put_Line ("(" & Float'Image(Point.A) & ", " & Float'Image(Point.B) & ", " & Float'Image(Point.C) & ")");
+   end Print_Point;
+
    function Point_Constructor (a, b, c : Float) return PlTess_Access is
       point : PlTess_Access := new pltess;
    begin
@@ -78,9 +89,14 @@ package body Plane_Tessellation is
       return point;
    end Point_Constructor;
 
-   function Point_Constructor (p : PlTess_Access) return PlTess_Access is
+   function Point_Constructor (p : pltess) return PlTess_Access is
    begin
       return Point_Constructor (p.A, p.B, p.C);
+   end Point_Constructor;
+
+   function Point_Constructor (p : PlTess_Access) return PlTess_Access is
+   begin
+      return Point_Constructor (p.all);
    end Point_Constructor;
       
    function Adjacents (This : PlTess_Access) return Point_Vector.Vector is
@@ -94,4 +110,31 @@ package body Plane_Tessellation is
       List.Append (Point_Constructor(This.A + 1.0, This.B - 1.0, This.C));
       return List;
    end Adjacents;
+
+   function "+" (L,R: pltess) return pltess is 
+      buf : pltess;
+   begin
+      buf.A := L.A + R.A;
+      buf.B := L.B + R.B;
+      buf.C := L.C + R.C;
+      return buf;
+   end "+";
+
+   function "-" (L,R: pltess) return pltess is 
+      buf : pltess;
+   begin
+      buf.A := L.A - R.A;
+      buf.B := L.B - R.B;
+      buf.C := L.C - R.C;
+      return buf;
+   end "-";
+   function "=" (L,R: pltess) return Boolean is
+   begin
+      if (L.A = R.A) and (L.B = R.B) and (L.C = R.C) then
+         return true;
+      else
+         return False;
+      end if;
+   end "=";
+
 end Plane_Tessellation;
